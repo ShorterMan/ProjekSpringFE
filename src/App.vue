@@ -1,17 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+  <div>
+    <h3>Product List</h3>
+    <ProductList @order="addOrderData"/>
+
+    <h3>Order Cart</h3>
+    <OrderCart ref="orderCart"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductList from './components/ProductList'
+import OrderCart from "./components/OrderCart"
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProductList,
+    OrderCart
+  },
+  methods:{
+    addOrderData(data){
+      this.$refs.orderCart.addOrderData(data);
+    }
   }
 }
 </script>
